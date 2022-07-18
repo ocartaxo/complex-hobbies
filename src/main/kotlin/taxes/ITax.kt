@@ -1,6 +1,6 @@
-package impostos
+package taxes
 
-import orcamento.Budget
+import budgets.Budget
 import java.math.BigDecimal
 
 interface ITax {

@@ -1,6 +1,6 @@
 package discounts
 
-import orcamento.Budget
+import budgets.Budget
 import java.math.BigDecimal
 
 class FiveItensDiscount(nextDiscount: Discount?) : Discount(nextDiscount) {

@@ -1,7 +1,7 @@
-package impostos
+package taxes
 
 import java.math.BigDecimal
-import orcamento.Budget
+import budgets.Budget
 
 class ISS : ITax {
 

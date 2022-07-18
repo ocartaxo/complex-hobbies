@@ -1,4 +1,4 @@
-package orcamento
+package budgets
 
 import java.math.BigDecimal
 
