@@ -1,6 +1,7 @@
 package budgets
 
 import budgets.state.BudgetState
+import budgets.state.Concluded
 import java.math.BigDecimal
 
 data class Budget(
@@ -24,4 +25,6 @@ data class Budget(
     fun updateState(bs: BudgetState) {
         state = bs
     }
+
+    fun isConcluded(): Boolean = state is Concluded
 }
