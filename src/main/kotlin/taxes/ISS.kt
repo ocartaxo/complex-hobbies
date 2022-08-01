@@ -3,9 +3,9 @@ package taxes
 import java.math.BigDecimal
 import budgets.Budget
 
-class ISS : ITax {
+class ISS(private val other: Tax?) : Tax(other) {
 
-    override fun compute(b: Budget): BigDecimal {
+    override fun computeIndividualTax(b: Budget): BigDecimal {
         return b.value.multiply(BigDecimal("0.06"))
     }
 
