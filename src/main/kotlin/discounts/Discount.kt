@@ -3,9 +3,9 @@ package discounts
 import budgets.Budget
 import java.math.BigDecimal
 
-abstract class Discount(val nextDiscount: Discount?) {
+abstract class Discount(private val nextDiscount: Discount?) {
 
-    public fun compute(b: Budget): BigDecimal {
+    fun compute(b: Budget): BigDecimal {
         if (shouldApply(b)) {
             return computeDiscount(b)
         }

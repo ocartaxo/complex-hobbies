@@ -3,7 +3,7 @@ package order
 import budgets.Budget
 import java.time.LocalDateTime
 
-class OrdersHandler(val actions: List<IActionsAfterCreateOrder>): IOrderHandler {
+class OrdersHandler(private val actions: List<IActionsAfterCreateOrder>): IOrderHandler {
 
     override fun execute(o: CreateOrder) {
 
