@@ -2,13 +2,21 @@ package budgets
 
 import budgets.state.BudgetState
 import budgets.state.Concluded
+import budgets.state.Evaluating
 import java.math.BigDecimal
 
 data class Budget(
-    val value: BigDecimal,
-    val itemsQuantity: Int = 1,
-    private var state: BudgetState
-) {
+    override var value: BigDecimal = BigDecimal.ZERO,
+    private var state: BudgetState = Evaluating(),
+    private val items: MutableList<IBudgetable> = mutableListOf(),
+) : IBudgetable {
+
+    constructor(itemsQuantity: Int, budgetValue: BigDecimal) : this() {
+        val valuePerItem = budgetValue.divide(itemsQuantity.toBigDecimal())
+        for (i in 0..itemsQuantity) {
+            this.addItem(BudgetItem(valuePerItem))
+        }
+    }
 
     fun approve() {
         state.approve(this)
@@ -27,4 +35,11 @@ data class Budget(
     }
 
     fun isConcluded(): Boolean = state is Concluded
+
+    fun itemsQuantity(): Int = items.size
+
+    fun addItem(item: IBudgetable) {
+        value = value.add(item.value)
+        items.add(item)
+    }
 }
