@@ -5,8 +5,8 @@ import budgets.state.Concluded
 import budgets.state.Evaluating
 import java.math.BigDecimal
 
-data class Budget(
-    override var value: BigDecimal = BigDecimal.ZERO,
+open class Budget(
+    override var value: BigDecimal? = BigDecimal.ZERO,
     private var state: BudgetState = Evaluating(),
     private val items: MutableList<IBudgetable> = mutableListOf(),
 ) : IBudgetable {
@@ -39,7 +39,7 @@ data class Budget(
     fun itemsQuantity(): Int = items.size
 
     fun addItem(item: IBudgetable) {
-        value = value.add(item.value)
+        value = value?.add(item.value)
         items.add(item)
     }
 }
